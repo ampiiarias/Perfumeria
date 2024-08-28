@@ -1,0 +1,75 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    background-color: #f7f7f7;
+    padding-right: 20px;
+}
+
+.content {
+    background-color: #D9A45F;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Estilos para los botones */
+.custom-button {
+    background-color: #D9A45F;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none; /* Remueve el subrayado */
+    display: block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 200px;
+    font-weight: bold;
+}
+
+.custom-button:hover {
+    background-color: #b88650;
+}
+
+/* Estilos para los enlaces dentro de los botones */
+.custom-button a {
+    text-decoration: none; /* Asegura que no haya subrayado */
+    color: white; /* Mantiene el color del texto blanco */
+    display: block; /* Hace que el enlace ocupe todo el botón */
+}
+
+/* Estilos adicionales */
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #D9A45F;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.table div {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #D9A45F;
+}

@@ -21,7 +21,7 @@ def clientes():
 #menu productos
 @app.route('/productos')
 def productos():
-  pass
+  return render_template('productos.html')
 
 if __name__ == '__main__':
   app.run(debug=True)
