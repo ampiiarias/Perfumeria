@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='productos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">Menú Pedidos</div>
+            <a href="{{ url_for('pedidos')}}">
+                <button class="custom-button">Cargar pedido</button>
+            </a>
+            <a href="{{ url_for('pedidos')}}">
+                <button class="custom-button">Modificar pedido</button>
+            </a>
+            <a href="{{ url_for('pedidos')}}">
+                <button class="custom-button">Eliminar pedido</button>
+            </a>
+            <a href="{{ url_for('index')}}">
+                <button class="custom-button">Menú</button>
+            </a>
+        </div>
+        <div class="content">
+            <div class="table">
+                <div>Jazmin</div>
+                <div>Vargas</div>
+                <div>48073868</div>
+                <div>Produc.</div>
+                <div>Agustin</div>
+                <div>Arias</div>
+                <div>47986803</div>
+                <div>Nautica</div>
+                <div>Luci</div>
+                <div>Soardo</div>
+                <div>48177507</div>
+                <div>Dior</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

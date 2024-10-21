@@ -11,12 +11,12 @@ def index():
 #menu pedidos
 @app.route('/pedidos')
 def pedidos():
-  pass
+  return render_template('pedidos.html')
 
 #menu clientes
 @app.route('/clientes')
 def clientes():
-  pass
+  return render_template('clientes.html')
 
 #menu productos
 @app.route('/productos')

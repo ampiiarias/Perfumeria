@@ -9,32 +9,41 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <div class="header">Menú Pedidos</div>
+            <div class="header">Menú Productos</div>
             <a href="{{ url_for('productos')}}">
-                <button class="custom-button">Cargar pedidos.</button>
+                <button class="custom-button">Cargar producto</button>
             </a>
-            <a href="{{ url_for('pedidos')}}">
-                <button class="custom-button">Menú pedidos.</button>
+            <a href="{{ url_for('productos')}}">
+                <button class="custom-button">Modificar producto</button>
             </a>
-            <a href="{{ url_for('clientes')}}">
-                <button class="custom-button">Menú clientes.</button>
+            <a href="{{ url_for('productos')}}">
+                <button class="custom-button">Eliminar producto</button>
+            </a>
+            <a href="{{ url_for('index')}}">
+                <button class="custom-button">Menú</button>
             </a>
         </div>
         <div class="content">
-            <div class="table">
-                <div>Jazmin</div>
-                <div>Vargas</div>
-                <div>48073868</div>
-                <div>Produc.</div>
-                <div>Agustin</div>
-                <div>Arias</div>
-                <div>47986803</div>
-                <div>Nautica</div>
-                <div>Luci</div>
-                <div>Soardo</div>
-                <div>48177507</div>
-                <div>Dior</div>
-            </div>
+            <table>
+                <tr>
+                    <th>Marca</th>
+                    <th>Nombre</th>
+                    <th>Medida</th>
+                    <th>Precio</th>
+                </tr>
+                <tr>
+                    <td>Nautica</td>
+                    <td>Nautica Blue</td>
+                    <td>100 ml</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Dior</td>
+                    <td>Miss Dior</td>
+                    <td>50 ml</td>
+                    <td>100</td>
+                </tr>
+                    </table>
         </div>
     </div>
 </body>

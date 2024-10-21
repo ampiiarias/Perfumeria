@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='productos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">Menú Clientes</div>
+            <a href="{{ url_for('clientes')}}">
+                <button class="custom-button" >Cargar cliente</button>
+            </a>
+            <a href="{{ url_for('clientes')}}">
+                <button class="custom-button">Modificar cliente</button>
+            </a>
+            <a href="{{ url_for('clientes')}}">
+                <button class="custom-button">Eliminar cliente</button>
+            </a>
+            <a href="{{ url_for('index')}}">
+                <button class="custom-button">Menú</button>
+            </a>
+        </div>
+        <div class="content">
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                </tr>
+                <tr>
+                    <td>Agustin</td>
+                    <td>Arias</td>
+                    <td>47986803</td>
+                </tr>
+                <tr>
+                    <td>Luci</td>
+                    <td>Soardo</td>
+                    <td>48177507</td>
+                </tr>
+                    </table>
+        </div>
+    </div>
+</body>
+</html>
