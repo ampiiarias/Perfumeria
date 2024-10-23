@@ -5,6 +5,12 @@ body {
     padding: 0;
 }
 
+/* Estilos básicos */
+#formulario-alta, #formulario-eliminar {
+    display: none; /* Oculta el formulario inicialmente */
+    margin-top: 20px;
+}
+
 .container {
     display: flex;
     height: 100vh; /* Altura completa de la ventana */
