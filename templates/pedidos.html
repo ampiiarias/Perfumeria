@@ -25,18 +25,28 @@
         </div>
         <div class="content">
             <div class="table">
-                <div>Jazmin</div>
-                <div>Vargas</div>
-                <div>48073868</div>
-                <div>Produc.</div>
-                <div>Agustin</div>
-                <div>Arias</div>
-                <div>47986803</div>
-                <div>Nautica</div>
-                <div>Luci</div>
-                <div>Soardo</div>
-                <div>48177507</div>
-                <div>Dior</div>
+                <table>
+                    <th>Fecha</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    {% for producto in productos %}
+                    <tr>
+                        {% for atributo in producto %}
+                        <td>{{atributo}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td>10/09/2024</td>
+                        <td>Nautica Blue</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>23/10/2024</td>
+                        <td>Miss Dior</td>
+                        <td>100</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

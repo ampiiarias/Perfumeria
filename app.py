@@ -1,5 +1,16 @@
 from flask import *
 
+import mysql.connector
+
+# Conexión a la base de datos
+conexion = mysql.connector.connect(
+	host="localhost",
+	user="root",
+	password="root",
+	database="proyecto_pedidos"
+)
+cursor = conexion.cursor()
+
 app = Flask(__name__)
 
 #página principal
@@ -16,7 +27,10 @@ def pedidos():
 #menu clientes
 @app.route('/clientes')
 def clientes():
-  return render_template('clientes.html')
+  query = "SELECT * FROM Cliente"
+  cursor.execute(query)
+  clientes = cursor.fetchall()
+  return render_template('clientes.html',clientes=clientes)
 
 #menu productos
 @app.route('/productos')

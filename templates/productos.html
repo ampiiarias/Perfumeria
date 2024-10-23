@@ -25,12 +25,17 @@
         </div>
         <div class="content">
             <table>
+                <th>Marca</th>
+                <th>Nombre</th>
+                <th>Medida</th>
+                <th>Precio</th>
+                {% for producto in productos %}   
                 <tr>
-                    <th>Marca</th>
-                    <th>Nombre</th>
-                    <th>Medida</th>
-                    <th>Precio</th>
-                </tr>
+                    {% for atributo in producto %}
+                      <td>{{atributo}}</td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
                 <tr>
                     <td>Nautica</td>
                     <td>Nautica Blue</td>
@@ -43,7 +48,7 @@
                     <td>50 ml</td>
                     <td>100</td>
                 </tr>
-                    </table>
+                </table>
         </div>
     </div>
 </body>

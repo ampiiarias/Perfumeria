@@ -25,16 +25,19 @@
         </div>
         <div class="content">
             <table>
+                <th>ID</th>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Direccion</th>
+                <th>Contacto</th>
+                {% for cliente in clientes %}   
                 <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>DNI</th>
-                </tr>
-                <tr>
-                    <td>Agustin</td>
-                    <td>Arias</td>
-                    <td>47986803</td>
-                </tr>
+                    {% for atributo in cliente %}
+                      <td>{{atributo}}</td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
                 <tr>
                     <td>Luci</td>
                     <td>Soardo</td>
