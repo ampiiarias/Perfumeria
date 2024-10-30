@@ -10,21 +10,68 @@
     <div class="container">
         <div class="sidebar">
             <div class="header">Menú Productos</div>
-            <a href="{{ url_for('productos')}}">
-                <button class="custom-button">Cargar producto</button>
-            </a>
-            <a href="{{ url_for('productos')}}">
-                <button class="custom-button">Modificar producto</button>
-            </a>
-            <a href="{{ url_for('productos')}}">
-                <button class="custom-button">Eliminar producto</button>
-            </a>
+            <button class="custom-button" onclick="document.getElementById('formulario-alta').style.display='block'">Cargar Producto</button>
+            <!-- Formulario oculto inicialmente -->
+             <div id="formulario-alta">
+                <h1>Agregar Producto</h1>
+                <form action="{{ url_for('agregar_productos')}}" method="POST">
+                    <label for="marca">Marca:</label>
+                    <input type="text" id="marca" name="marca" required>
+                    <br>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <br>
+                    <label for="medida">Medida:</label>
+                    <input type="text" id="medida" name="medida" required>
+                    <br>
+                    <label for="precio">Precio:</label>
+                    <input type="text" id="precio" name="precio" required>
+                    <br>
+                    <input type="submit" value="Agregar">
+                </form>
+            </div>
+            <button class="custom-button" onclick="document.getElementById('formulario-modificar').style.display='block'">Modificar producto</button>
+            <div id="formulario-modificar">
+                <h1>Modificar un producto</h1>
+                <form action="{{ url_for('modificar_productos')}}" method="POST">
+                    <p> Ingresar un ID que corresponda a un producto ya ingresado</p>
+                    <label for="ID">ID:</label>
+                    <input type="number" id="ID" name="ID" required>
+                    <br>
+                
+                    <p> Modificar los campos: </p>
+                    <label for="marca">Marca:</label>
+                    <input type="text" id="marca" name="marca" required>
+                    <br>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <br>
+                    <label for="medida">Medida:</label>
+                    <input type="text" id="medida" name="medida" required>
+                    <br>
+                    <label for="precio">Precio:</label>
+                    <input type="text" id="precio" name="precio" required>
+                    <br>
+                    <input type="submit" value="Modificar">
+                </form>
+            </div>
+            <button class="custom-button" onclick="document.getElementById('formulario-eliminar').style.display='block'">Eliminar Producto</button>
+            <div id="formulario-eliminar">
+                <h1>Eliminar un producto</h1>
+                <form action="{{ url_for('eliminar_productos')}}" method="POST">
+                    <label for="ID">ID:</label>
+                    <input type="number" id="ID" name="ID" required>
+                    <br>
+                    <input type="submit" value="Eliminar">
+                </form>
+            </div>
             <a href="{{ url_for('index')}}">
                 <button class="custom-button">Menú</button>
             </a>
         </div>
         <div class="content">
             <table>
+                <th>ID</th>
                 <th>Marca</th>
                 <th>Nombre</th>
                 <th>Medida</th>
@@ -36,18 +83,6 @@
                     {% endfor %}
                     </tr>
                 {% endfor %}
-                <tr>
-                    <td>Nautica</td>
-                    <td>Nautica Blue</td>
-                    <td>100 ml</td>
-                    <td>50</td>
-                </tr>
-                <tr>
-                    <td>Dior</td>
-                    <td>Miss Dior</td>
-                    <td>50 ml</td>
-                    <td>100</td>
-                </tr>
                 </table>
         </div>
     </div>

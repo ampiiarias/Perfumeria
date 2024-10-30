@@ -6,7 +6,7 @@ body {
 }
 
 /* Estilos básicos */
-#formulario-alta, #formulario-eliminar {
+#formulario-alta, #formulario-eliminar, #formulario-modificar {
     display: none; /* Oculta el formulario inicialmente */
     margin-top: 20px;
 }

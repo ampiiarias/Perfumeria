@@ -22,7 +22,10 @@ def index():
 #menu pedidos
 @app.route('/pedidos')
 def pedidos():
-  return render_template('pedidos.html')
+  query = "SELECT * FROM Pedido"
+  cursor.execute(query)
+  pedidos = cursor.fetchall()
+  return render_template('pedidos.html',pedidos=pedidos)
 
 #menu clientes
 @app.route('/clientes')
@@ -47,6 +50,23 @@ def agregar_clientes():
   conexion.commit()
   return redirect(url_for('clientes'))
 
+@app.route('/modificar_clientes', methods=['POST'])
+def modificar_clientes():
+  #Obtengo el id que puso en el formulario
+  ID_cliente = request.form.get('ID')
+
+  #Obtengo los campos modificados
+  dni = request.form.get('dni')
+  nombre = request.form.get('nombre')
+  apellido = request.form.get('apellido')
+  direccion = request.form.get('direccion')
+  contacto = request.form.get('contacto')
+
+  #Ejecuto el SQL para modificar
+  query = 'UPDATE Cliente SET dni = %s, nombre = %s, apellido = %s, direccion = %s, contacto = %s WHERE ID_Cliente = %s'
+  cursor.execute(query, (dni,nombre,apellido,direccion,contacto,ID_cliente))
+  return redirect(url_for('clientes'))
+
 @app.route('/eliminar_clientes', methods=['POST'])
 def eliminar_clientes():
 
@@ -62,7 +82,52 @@ def eliminar_clientes():
 #menu productos
 @app.route('/productos')
 def productos():
-  return render_template('productos.html')
+  query = "SELECT * FROM Producto"
+  cursor.execute(query)
+  productos = cursor.fetchall()
+  return render_template('productos.html',productos=productos)
+
+@app.route('/agregar_productos', methods=['POST'])
+def agregar_productos():
+  #Obtengo los datos del formulario
+  marca = request.form.get('marca')
+  nombre = request.form.get('nombre')
+  medida = request.form.get('medida')
+  precio = request.form.get('precio')
+
+  #los agrego a la base de datos
+  query = 'INSERT INTO Producto (marca, nombre, medida, precio) VALUES (%s, %s, %s, %s)'
+  cursor.execute(query, (marca, nombre, medida, precio))
+  conexion.commit()
+  return redirect(url_for('productos'))
+
+@app.route('/modificar_productos', methods=['POST'])
+def modificar_productos():
+  #Obtengo el id que puso en el formulario
+  ID_producto = request.form.get('ID')
+
+  #Obtengo los campos modificados
+  marca = request.form.get('marca')
+  nombre = request.form.get('nombre')
+  medida = request.form.get('medida')
+  precio = request.form.get('precio')
+
+  #Ejecuto el SQL para modificar
+  query = 'UPDATE Producto SET marca = %s, nombre = %s, medida = %s, precio = %s  WHERE ID_Producto = %s'
+  cursor.execute(query, (marca,nombre,medida,precio,ID_producto))
+  return redirect(url_for('productos'))
+
+@app.route('/eliminar_productos', methods=['POST'])
+def eliminar_productos():
+
+  #Obtengo el id que puso en el formulario
+  ID_producto = request.form.get('ID')
+
+  #Hago la query en la base de datos para eliminar el producto de ese ID
+  query = 'DELETE FROM Producto WHERE '+ID_producto+' = Producto.ID_Producto'
+  cursor.execute(query)
+  conexion.commit()
+  return redirect(url_for('productos'))
 
 if __name__ == '__main__':
   app.run(debug=True)
