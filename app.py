@@ -22,10 +22,36 @@ def index():
 #menu pedidos
 @app.route('/pedidos')
 def pedidos():
-  query = "SELECT * FROM Pedido"
-  cursor.execute(query)
-  pedidos = cursor.fetchall()
-  return render_template('pedidos.html',pedidos=pedidos)
+    query = """
+        SELECT Pedido.ID_Pedido, Pedido.Fecha, Pedido.Monto, 
+               Cliente.Nombre AS ClienteNombre, 
+               Producto.Marca AS ProductoMarca, Producto.Nombre AS ProductoNombre
+        FROM Pedido
+        JOIN Cliente ON Pedido.ID_Cliente = Cliente.ID_Cliente
+        JOIN Tiene ON Pedido.ID_Pedido = Tiene.ID_Pedido
+        JOIN Producto ON Tiene.ID_Producto = Producto.ID_Producto;
+    """
+    cursor.execute(query)
+    pedidos = cursor.fetchall()
+    return render_template('pedidos.html', pedidos=pedidos)
+
+@app.route('/eliminar_pedido', methods=['POST'])
+def eliminar_pedido():
+    # Obtengo el ID del pedido desde el formulario
+    ID_pedido = request.form.get('ID')
+
+    # Primero elimino las entradas en la tabla Tiene que estén relacionadas con este pedido
+    query_tiene = 'DELETE FROM Tiene WHERE ID_Pedido = %s'
+    cursor.execute(query_tiene, (ID_pedido,))
+
+    # Luego elimino el pedido
+    query_pedido = 'DELETE FROM Pedido WHERE ID_Pedido = %s'
+    cursor.execute(query_pedido, (ID_pedido,))
+    conexion.commit()
+
+    return redirect(url_for('pedidos'))
+
+
 
 #menu clientes
 @app.route('/clientes')
